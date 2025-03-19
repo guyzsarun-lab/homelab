@@ -20,7 +20,7 @@ resource "kong-gateway_route" "dynamic-service-route" {
   for_each = { for service in local.service_route : service.name => service }
 
   name          = "${each.value.name}-route"
-  protocols     = ["http","https"]
+  protocols     = ["http", "https"]
   hosts         = [each.value.host]
   paths         = []
   preserve_host = true

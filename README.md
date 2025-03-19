@@ -1,4 +1,5 @@
 # homelab
+[![terraform](https://github.com/guyzsarun-lab/homelab/actions/workflows/terraform.yaml/badge.svg)](https://github.com/guyzsarun-lab/homelab/actions/workflows/terraform.yaml)
 
 ## Components
 - [Kong](#kong-api-gateway) API Gateway

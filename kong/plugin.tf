@@ -8,8 +8,8 @@ resource "kong-gateway_plugin_prometheus" "prometheus" {
   }
 
   enabled       = true
-  instance_name            = "prometheus-metrics"
+  instance_name = "prometheus-metrics"
   protocols = [
-    "https","http"
+    "https", "http"
   ]
 }
