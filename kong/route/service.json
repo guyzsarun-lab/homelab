@@ -1,0 +1,56 @@
+[
+    {
+        "name": "harbor",
+        "host": "harbor.proxmox.local",
+        "dest": {
+            "host": "server.proxmox.local",
+            "port": 80,
+            "protocol": "http"
+        }
+    },
+    {
+        "name": "maybe",
+        "host": "maybe.proxmox.local",
+        "dest": {
+            "host": "server.proxmox.local",
+            "port": 3000,
+            "protocol": "http"
+        }
+    },
+    {
+        "name": "vault",
+        "host": "vault.proxmox.local",
+        "dest": {
+            "host": "server.proxmox.local",
+            "port": 8200,
+            "protocol": "https"
+        }
+    },
+    {
+        "name": "minio",
+        "host": "minio.proxmox.local",
+        "dest": {
+            "host": "server.proxmox.local",
+            "port": 9090,
+            "protocol": "http"
+        }
+    },
+    {
+        "name": "adventurelog",
+        "host": "adventurelog.proxmox.local",
+        "dest": {
+            "host": "172.16.0.13",
+            "port": 8015,
+            "protocol": "http"
+        }
+    },
+    {
+        "name": "adventurelog-api",
+        "host": "api-adventurelog.proxmox.local",
+        "dest": {
+            "host": "172.16.0.13",
+            "port": 8016,
+            "protocol": "http"
+        }
+    }
+]

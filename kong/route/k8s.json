@@ -1,0 +1,38 @@
+[
+    {
+        "name": "argo-route",
+        "hosts": ["argo.proxmox.local"],
+        "paths": [],
+        "strip_path": true
+    },
+    {
+        "name": "dashy-route",
+        "hosts": ["gateway.proxmox.local"],
+        "paths": ["/"],
+        "strip_path": true
+    },
+    {
+        "name": "detector-route",
+        "hosts": ["detector.proxmox.local"],
+        "paths": [],
+        "strip_path": true
+    },
+    {
+        "name": "nextcloud-route",
+        "hosts": ["nextcloud.proxmox.local"],
+        "paths": [],
+        "strip_path": true
+    },
+    {
+        "name": "cyberchef-route",
+        "hosts": ["gateway.proxmox.local"],
+        "paths": ["/cyberchef"],
+        "strip_path": false
+    },
+    {
+        "name": "toolchain-route",
+        "hosts": ["gateway.proxmox.local"],
+        "paths": ["/toolchain"],
+        "strip_path": false
+    }
+]
