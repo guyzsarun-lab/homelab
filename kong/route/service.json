@@ -52,5 +52,14 @@
             "port": 8016,
             "protocol": "http"
         }
+    },
+    {
+        "name": "kong-manager",
+        "host": "kong-manager.proxmox.local",
+        "dest": {
+            "host": "localhost",
+            "port": 8002,
+            "protocol": "http"
+        }
     }
 ]
