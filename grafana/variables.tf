@@ -9,3 +9,14 @@ variable "grafana_credentials" {
   type        = string
   sensitive   = true
 }
+
+variable "google-sheets-datasource" {
+  description = "Google Sheets Datasource Configuration"
+  type = object({
+    tokenUri           = string
+    authenticationType = string
+    defaultProject     = string
+    clientEmail        = string
+    privateKey         = string
+  })
+}
