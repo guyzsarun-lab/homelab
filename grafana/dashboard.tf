@@ -18,8 +18,8 @@ resource "grafana_dashboard" "logging" {
 
 resource "grafana_dashboard" "private" {
   folder      = grafana_folder.folder["Finance"].uid
-  for_each    = fileset("${path.module}/dashboard/private", "*.json")
-  config_json = file("${path.module}/dashboard/private/${each.value}")
+  for_each    = fileset("${path.module}/dashboard/private", "*.tftpl")
+  config_json = templatefile("${path.module}/dashboard/private/${each.value}", { datasource-uid = grafana_data_source.google-sheets.uid })
 }
 
 resource "grafana_dashboard" "public" {
