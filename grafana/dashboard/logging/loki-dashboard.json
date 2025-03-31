@@ -1,0 +1,263 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "Loki dashboard with quick search and timeline.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 851,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "aeg2nqw52mpdsb"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "hidden",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "dataLinks": [],
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "aeg2nqw52mpdsb"
+          },
+          "editorMode": "code",
+          "expr": "rate({namespace=\"$namespace\",pod_name=\"$workload\"}[$__auto])",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Timeline",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "aeg2nqw52mpdsb"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 25,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 2,
+      "maxDataPoints": "",
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": true,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": true
+      },
+      "pluginVersion": "11.3.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "aeg2nqw52mpdsb"
+          },
+          "editorMode": "code",
+          "expr": "{namespace=\"$namespace\", pod_name=\"$workload\"} |~ \"$search\"",
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Logs",
+      "type": "logs"
+    }
+  ],
+  "preload": false,
+  "refresh": false,
+  "schemaVersion": 40,
+  "tags": [
+    "loki",
+    "logging"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "default",
+          "value": "default"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "aeg2nqw52mpdsb"
+        },
+        "definition": "",
+        "includeAll": false,
+        "name": "namespace",
+        "options": [],
+        "query": {
+          "label": "namespace",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "text": "cyberchef-application-585bcdf9c-kvkts",
+          "value": "cyberchef-application-585bcdf9c-kvkts"
+        },
+        "datasource": {
+          "type": "loki",
+          "uid": "aeg2nqw52mpdsb"
+        },
+        "definition": "",
+        "includeAll": false,
+        "name": "workload",
+        "options": [],
+        "query": {
+          "label": "pod_name",
+          "refId": "LokiVariableQueryEditor-VariableQuery",
+          "stream": "{namespace=\"$namespace\"}",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "sort": 5,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "name": "search",
+        "options": [
+          {
+            "selected": true,
+            "text": "",
+            "value": ""
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "Loki Dashboard",
+  "uid": "liz0yRCZz",
+  "version": 7,
+  "weekStart": ""
+}
