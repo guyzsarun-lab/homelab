@@ -15,6 +15,7 @@ resource "grafana_folder" "folder" {
     "Networking",
     "Hardware",
     "Public",
+    "Finance",
     "Loki"
   ])
 }
