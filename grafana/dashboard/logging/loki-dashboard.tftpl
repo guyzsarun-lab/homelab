@@ -25,7 +25,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "aeg2nqw52mpdsb"
+        "uid": "${datasource-uid}"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "aeg2nqw52mpdsb"
+            "uid": "${datasource-uid}"
           },
           "editorMode": "code",
           "expr": "rate({namespace=\"$namespace\",pod_name=\"$workload\"}[$__auto])",
@@ -122,7 +122,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "aeg2nqw52mpdsb"
+        "uid": "${datasource-uid}"
       },
       "fieldConfig": {
         "defaults": {},
@@ -151,7 +151,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "aeg2nqw52mpdsb"
+            "uid": "${datasource-uid}"
           },
           "editorMode": "code",
           "expr": "{namespace=\"$namespace\", pod_name=\"$workload\"} |~ \"$search\"",
@@ -179,7 +179,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "aeg2nqw52mpdsb"
+          "uid": "${datasource-uid}"
         },
         "definition": "",
         "includeAll": false,
@@ -203,7 +203,7 @@
         },
         "datasource": {
           "type": "loki",
-          "uid": "aeg2nqw52mpdsb"
+          "uid": "${datasource-uid}"
         },
         "definition": "",
         "includeAll": false,
