@@ -20,3 +20,11 @@ variable "google-sheets-datasource" {
     privateKey         = string
   })
 }
+
+variable "loki-datasource" {
+  description = "Loki Datasource Configuration"
+  type = object({
+    url = string
+    http_headers = map(string)
+  })
+}

@@ -13,3 +13,11 @@ resource "grafana_data_source" "google-sheets" {
     "privateKey" = var.google-sheets-datasource.privateKey
   })
 }
+
+resource "grafana_data_source" "loki" {
+  type = "loki"
+  name = "loki-terraform"
+
+  url = var.loki-datasource.url
+  http_headers = var.loki-datasource.http_headers
+}
