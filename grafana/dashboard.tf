@@ -13,7 +13,7 @@ resource "grafana_dashboard" "hardware" {
 resource "grafana_dashboard" "logging" {
   folder      = grafana_folder.folder["Loki"].uid
   for_each    = fileset("${path.module}/dashboard/logging", "*.tftpl")
-  config_json = templatefile("${path.module}/dashboard/logging/${each.value}",{ datasource-uid = grafana_data_source.loki.uid })
+  config_json = templatefile("${path.module}/dashboard/logging/${each.value}", { datasource-uid = grafana_data_source.loki.uid })
 }
 
 resource "grafana_dashboard" "private" {

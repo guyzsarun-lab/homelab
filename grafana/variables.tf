@@ -24,7 +24,7 @@ variable "google-sheets-datasource" {
 variable "loki-datasource" {
   description = "Loki Datasource Configuration"
   type = object({
-    url = string
+    url          = string
     http_headers = map(string)
   })
 }

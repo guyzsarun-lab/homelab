@@ -18,6 +18,6 @@ resource "grafana_data_source" "loki" {
   type = "loki"
   name = "loki-terraform"
 
-  url = var.loki-datasource.url
+  url          = var.loki-datasource.url
   http_headers = var.loki-datasource.http_headers
 }
