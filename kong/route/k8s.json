@@ -6,7 +6,7 @@
         "strip_path": true
     },
     {
-        "name": "dashy-route",
+        "name": "homepage-route",
         "hosts": ["gateway.proxmox.local"],
         "paths": ["/"],
         "strip_path": true
@@ -24,6 +24,12 @@
         "strip_path": true
     },
     {
+        "name": "calibre-route",
+        "hosts": ["calibre.proxmox.local"],
+        "paths": [],
+        "strip_path": true
+    },
+    {
         "name": "cyberchef-route",
         "hosts": ["gateway.proxmox.local"],
         "paths": ["/cyberchef"],
@@ -33,6 +39,12 @@
         "name": "toolchain-route",
         "hosts": ["gateway.proxmox.local"],
         "paths": ["/toolchain"],
+        "strip_path": false
+    },
+    {
+        "name": "glance-route",
+        "hosts": ["gateway.proxmox.local"],
+        "paths": ["/glance"],
         "strip_path": false
     }
 ]

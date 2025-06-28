@@ -61,5 +61,14 @@
             "port": 8002,
             "protocol": "http"
         }
+    },
+    {
+        "name": "n8n-automation",
+        "host": "n8n-automation.proxmox.local",
+        "dest": {
+            "host": "172.16.0.13",
+            "port": 5678,
+            "protocol": "http"
+        }
     }
 ]
