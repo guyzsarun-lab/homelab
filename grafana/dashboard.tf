@@ -1,38 +1,30 @@
-resource "grafana_dashboard" "networking" {
-  folder      = grafana_folder.folder["Networking"].uid
-  for_each    = fileset("${path.module}/dashboard/networking", "*.json")
-  config_json = file("${path.module}/dashboard/networking/${each.value}")
+locals {
+  folder = setsubtract(flatten([for k, _ in toset(fileset("${path.module}/dashboard/", "**")) : dirname(k)]), ["."])
 }
 
-resource "grafana_dashboard" "hardware" {
-  folder      = grafana_folder.folder["Hardware"].uid
-  for_each    = fileset("${path.module}/dashboard/hardware", "*.json")
-  config_json = file("${path.module}/dashboard/hardware/${each.value}")
+resource "grafana_folder" "folder_template" {
+  org_id = grafana_organization.homelab.org_id
+
+  for_each = local.folder
+  title    = each.key
 }
 
-resource "grafana_dashboard" "logging" {
-  folder      = grafana_folder.folder["Loki"].uid
-  for_each    = fileset("${path.module}/dashboard/logging", "*.tftpl")
-  config_json = templatefile("${path.module}/dashboard/logging/${each.value}", { datasource-uid = grafana_data_source.loki.uid })
-}
+resource "grafana_dashboard" "dashboard_template" {
+  folder = grafana_folder.folder_template[split("/", each.value)[0]].uid
 
-resource "grafana_dashboard" "private" {
-  folder      = grafana_folder.folder["Finance"].uid
-  for_each    = fileset("${path.module}/dashboard/private", "*.tftpl")
-  config_json = templatefile("${path.module}/dashboard/private/${each.value}", { datasource-uid = grafana_data_source.google-sheets.uid })
-}
-
-resource "grafana_dashboard" "public" {
-  folder      = grafana_folder.folder["Public"].uid
-  for_each    = fileset("${path.module}/dashboard/public", "*.json")
-  config_json = file("${path.module}/dashboard/public/${each.value}")
+  for_each    = toset(flatten([for folder in local.folder : [for file in fileset("${path.module}/dashboard/${folder}/", "*json") : "${folder}/${file}"]]))
+  config_json = file("${path.module}/dashboard/${each.value}")
 }
 
 resource "grafana_dashboard_public" "public" {
   org_id        = grafana_organization.homelab.org_id
-  dashboard_uid = each.value.uid
+  dashboard_uid = grafana_dashboard.dashboard_template["public/${each.value}"].uid
 
-  for_each   = grafana_dashboard.public
+  for_each   = fileset("${path.module}/dashboard/public/", "*json")
   share      = "public"
   is_enabled = true
+}
+
+output "grafana_dashboard_public_uid" {
+  value = { for k, v in grafana_dashboard_public.public : k => v.access_token }
 }
