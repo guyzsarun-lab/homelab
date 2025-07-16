@@ -21,7 +21,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 850,
+  "id": 1097,
   "links": [],
   "panels": [
     {
@@ -43,6 +43,7 @@
         "groupBy": [],
         "groupMode": "default",
         "maxItems": 20,
+        "showInactiveAlerts": false,
         "sortOrder": 1,
         "stateFilter": {
           "error": true,
@@ -53,7 +54,7 @@
         },
         "viewMode": "list"
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "title": "Summary of alerts status",
       "type": "alertlist"
     },
@@ -121,8 +122,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -452,11 +452,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -491,7 +492,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${datasource-uid}"
+        "uid": "${DS_LOKI}"
       },
       "fieldConfig": {
         "defaults": {},
@@ -506,6 +507,7 @@
       "id": 511,
       "options": {
         "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
         "enableLogDetails": true,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
@@ -514,7 +516,7 @@
         "sortOrder": "Descending",
         "wrapLogMessage": false
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -581,8 +583,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -912,11 +913,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -937,7 +939,8 @@
     },
     {
       "datasource": {
-        "uid": "Loki"
+        "type": "loki",
+        "uid": "${DS_LOKI}"
       },
       "fieldConfig": {
         "defaults": {},
@@ -952,6 +955,7 @@
       "id": 586,
       "options": {
         "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
         "enableLogDetails": true,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
@@ -960,14 +964,17 @@
         "sortOrder": "Descending",
         "wrapLogMessage": false
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
-            "uid": "Loki"
+            "type": "loki",
+            "uid": "${DS_LOKI}"
           },
-          "expr": "{app=\"promtail\"} | logfmt | level=\"warn\" or level=\"error\"",
-          "legendFormat": "",
+          "direction": "backward",
+          "editorMode": "code",
+          "expr": "{app=\"promtail\"}",
+          "queryType": "range",
           "refId": "A"
         }
       ],
@@ -1023,8 +1030,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -1053,11 +1059,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1124,8 +1131,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -1154,11 +1160,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1239,8 +1246,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -1270,11 +1276,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1341,8 +1348,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1370,11 +1376,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1441,8 +1448,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -1470,11 +1476,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1555,8 +1562,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -1585,11 +1591,12 @@
           "width": 200
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1656,8 +1663,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1895,11 +1901,12 @@
           "width": 200
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -1990,8 +1997,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -2020,11 +2026,12 @@
           "width": 200
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -2091,8 +2098,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2330,11 +2336,12 @@
           "width": 200
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -2438,8 +2445,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "transparent"
               },
               {
                 "color": "red",
@@ -2467,11 +2473,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -2543,8 +2550,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2781,11 +2787,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -2907,11 +2914,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -3218,11 +3226,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
@@ -3265,13 +3274,27 @@
   ],
   "preload": false,
   "refresh": "1m",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [
     "logging",
     "loki"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "current": {
+          "text": "loki-terraform",
+          "value": "dehk2ydqpfg1sc"
+        },
+        "label": "Datasource",
+        "name": "DS_LOKI",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-24h",
@@ -3293,6 +3316,5 @@
   "timezone": "",
   "title": "Loki stack monitoring (Promtail, Loki)",
   "uid": "loki_stack_monitoring_quortex",
-  "version": 4,
-  "weekStart": ""
+  "version": 2
 }

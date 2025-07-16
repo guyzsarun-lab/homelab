@@ -19,13 +19,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 851,
+  "id": 1096,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "loki",
-        "uid": "${datasource-uid}"
+        "uid": "${DS_LOKI}"
       },
       "fieldConfig": {
         "defaults": {
@@ -70,8 +70,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -99,16 +98,17 @@
           "showLegend": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
             "type": "loki",
-            "uid": "${datasource-uid}"
+            "uid": "${DS_LOKI}"
           },
           "editorMode": "code",
           "expr": "rate({namespace=\"$namespace\",pod_name=\"$workload\"}[$__auto])",
@@ -122,7 +122,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${datasource-uid}"
+        "uid": "${DS_LOKI}"
       },
       "fieldConfig": {
         "defaults": {},
@@ -138,6 +138,7 @@
       "maxDataPoints": "",
       "options": {
         "dedupStrategy": "none",
+        "enableInfiniteScrolling": false,
         "enableLogDetails": true,
         "prettifyLogMessage": false,
         "showCommonLabels": false,
@@ -146,12 +147,12 @@
         "sortOrder": "Descending",
         "wrapLogMessage": true
       },
-      "pluginVersion": "11.3.0",
+      "pluginVersion": "11.6.0",
       "targets": [
         {
           "datasource": {
             "type": "loki",
-            "uid": "${datasource-uid}"
+            "uid": "${DS_LOKI}"
           },
           "editorMode": "code",
           "expr": "{namespace=\"$namespace\", pod_name=\"$workload\"} |~ \"$search\"",
@@ -165,7 +166,7 @@
   ],
   "preload": false,
   "refresh": false,
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [
     "loki",
     "logging"
@@ -174,12 +175,25 @@
     "list": [
       {
         "current": {
+          "text": "loki-terraform",
+          "value": "dehk2ydqpfg1sc"
+        },
+        "label": "Datasource",
+        "name": "DS_LOKI",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "type": "datasource"
+      },
+      {
+        "current": {
           "text": "default",
           "value": "default"
         },
         "datasource": {
           "type": "loki",
-          "uid": "${datasource-uid}"
+          "uid": "${DS_LOKI}"
         },
         "definition": "",
         "includeAll": false,
@@ -198,12 +212,12 @@
       {
         "allValue": ".*",
         "current": {
-          "text": "cyberchef-application-585bcdf9c-kvkts",
-          "value": "cyberchef-application-585bcdf9c-kvkts"
+          "text": "homepage-application-8669d5c444-xdmpw",
+          "value": "homepage-application-8669d5c444-xdmpw"
         },
         "datasource": {
           "type": "loki",
-          "uid": "${datasource-uid}"
+          "uid": "${DS_LOKI}"
         },
         "definition": "",
         "includeAll": false,
@@ -258,6 +272,5 @@
   "timezone": "",
   "title": "Loki Dashboard",
   "uid": "liz0yRCZz",
-  "version": 7,
-  "weekStart": ""
+  "version": 5
 }
