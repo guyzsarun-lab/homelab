@@ -1,3 +1,8 @@
+# helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace
+
+# helm install istiod istio/istiod --values values.yaml -n istio-system
+# helm install istio-ingressgateway istio/gateway -n istio-system
+
 pilot:
   autoscaleEnabled: false
   resources:
