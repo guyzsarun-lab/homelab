@@ -8,7 +8,7 @@ locals {
 
 resource "kong-gateway_service" "kubernetes-cluster" {
   enabled  = true
-  host     = "k8s.proxmox.local"
+  host     = "k8s.proxmox.homelab"
   name     = "k8s-gateway-service"
   port     = "443"
   protocol = "https"
