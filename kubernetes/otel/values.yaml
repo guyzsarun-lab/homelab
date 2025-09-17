@@ -1,0 +1,36 @@
+# helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+# helm install otel open-telemetry/opentelemetry-collector  --values values.yaml
+
+mode: deployment
+
+image:
+  repository: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-k8s
+
+command:
+  name: otelcol-k8s
+
+config:
+  exporters:
+    debug: {}
+    otlp:
+      endpoint: "jaeger-collector:4317"
+      tls:
+        insecure: true
+
+  receivers:
+    otlp:
+      protocols:
+        grpc:
+          endpoint: 0.0.0.0:4317
+        http:
+          endpoint: 0.0.0.0:4318
+
+  service:
+    pipelines:
+      traces:
+        receivers:
+          - otlp
+        exporters:
+          - otlp
+      metrics: null
+      logs: null
