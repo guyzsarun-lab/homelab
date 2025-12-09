@@ -1,0 +1,7 @@
+# helm upgrade istio-cni istio/cni --values kubernetes/istiod/ambient/istio-cni-values.yaml
+ambient:
+  enabled: true
+resources:
+  requests:
+    cpu: 50m
+    memory: 50Mi
