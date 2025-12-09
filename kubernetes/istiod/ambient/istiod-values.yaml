@@ -1,0 +1,18 @@
+# helm install istio-base istio/base -n istio-system --set defaultRevision=default --create-namespace
+# helm install istio-ingressgateway istio/gateway -n istio-system
+# helm install istiod istio/istiod --values ./kubernetes/istiod/ambient/istiod-values.yaml
+ambient:
+  enabled: true
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+meshConfig:
+  enableTracing: true
+  extensionProviders:
+  - name: otel-tracing
+    opentelemetry:
+      port: 4317
+      service: opentelemetry-collector.istio-system.svc.cluster.local
+      resource_detectors:
+        environment: {}
